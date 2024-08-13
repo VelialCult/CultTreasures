@@ -1,0 +1,27 @@
+messages:
+  treasure:
+    already-opening: "&6➤ &fВ данный момент кто-то уже открывает данную сокровищницу, подожди!"
+    dont-have-keys: "&c✘ &fУ вас нет ключей для сокровищницы &e{treasure}"
+    reward:
+      - '&fИгрок &a{player} &fоткрыл сокровищницу &a{treasure}'
+      - '&fи получил из неё &e{item}'
+  commands:
+    wrong-value: "&c✘ &fВы ввели неверное значение &e{value}"
+    help:
+      - '&6&lCultTreasures &8| &fПомощь по командам:'
+      - ' &e&l* &fСоздать блок для открытия меню - &e/culttreasures set-block &7(смотрите на блок)'
+      - ' &e&l* &fВыдать игроку ключи - &e/culttreasures give <игрок> <UUID сокровищницы> <количество>'
+    set-block:
+      set: "&a✔ &fЛокация для открытия меню успешно установлена"
+      already-exists: "&c✘ &fВ данной локации уже установлена локация для открытия меню"
+    give:
+      usage: "&6➤ &fИспользуйте - &e/culttreasures give <игрок> <UUID сокровищницы> <количество>"
+      player-is-null: "&c✘ &fДанный игрок не найден на сервере"
+      treasure-not-found: "&c✘ &fСокровищница с данным UUID не найдена"
+      give: "&a✔ &fВы успешно выдали &e{amount} &fигроку {player}"
+      info: "&6➤ &fВам было добавлено &e{amount} &fключей от сокровищницы"
+    create:
+      block-is-null: "&c✘ &fБлок на который вы смотрите - не найден"
+      usage: "&6➤ &fИспользуйте - &e/culttreasures create &7(смотрите на блок)"
+      create: "&a✔ &fСокровищница успешно создана"
+      already-exists: "&c✘ &fВ данной локации уже найдена сокровищница"

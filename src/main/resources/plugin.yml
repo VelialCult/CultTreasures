@@ -1,0 +1,10 @@
+main: ru.velialcult.treasures.CultTreasures
+api-version: 1.16
+version: '${project.version}'
+name: CultTreasures
+website: https://vk.com/velialcultstudio
+author: Nilsson03
+depend:
+  - CultLibrary
+commands:
+  culttreasures:
