@@ -7,6 +7,7 @@ import ru.velialcult.library.bukkit.file.FileRepository;
 import ru.velialcult.library.bukkit.utils.ConfigurationUtil;
 import ru.velialcult.library.java.database.DataBase;
 import ru.velialcult.library.java.database.DataBaseType;
+import ru.velialcult.library.update.UpdateChecker;
 import ru.velialcult.treasures.animation.TreasureOpener;
 import ru.velialcult.treasures.command.CultTreasureCommand;
 import ru.velialcult.treasures.data.DataBaseManager;
@@ -52,6 +53,9 @@ public class CultTreasures extends JavaPlugin {
 
             this.saveDefaultConfig();
             loadConfigs();
+
+            UpdateChecker updateChecker = new UpdateChecker(this, "CultTreasures");
+            updateChecker.check();
 
             String dataBaseType = getConfig().getString("settings.database.type");
             if (dataBaseType.equalsIgnoreCase("mysql")) {
