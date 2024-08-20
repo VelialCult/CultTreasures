@@ -2,6 +2,7 @@ package ru.velialcult.treasures;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.velialcult.library.bukkit.file.FileRepository;
 import ru.velialcult.library.bukkit.utils.ConfigurationUtil;
@@ -96,6 +97,16 @@ public class CultTreasures extends JavaPlugin {
         } catch (Exception e) {
             getLogger().severe("Произошла ошибка при инициализации плагина: " + e.getMessage());
         }
+    }
+
+    private void setDefaultLines() {
+        FileConfiguration messagesConfig = FileRepository.getByName(this, "messages.yml").getConfiguration();
+
+        if (!messagesConfig.contains("messages.treasure.no-reward")) {
+            messagesConfig.set("messages.treasure.no-reward", "&6➤ &fПохоже, что администрация не настроила награды, сообщите об этом.");
+        }
+
+        ConfigurationUtil.saveFile(messagesConfig, getDataFolder().getAbsolutePath(), "messages.yml");
     }
 
     private void loadConfigs() {

@@ -58,14 +58,21 @@ public class TreasureManager {
             }
 
             if (keyManager.hasKey(player, treasure)) {
-                keyManager.useKey(player, treasure);
                 ItemRandomizer itemRandomizer = new ItemRandomizer();
                 Map<ItemStack, Double> items = treasure.getItems();
                 items.forEach(itemRandomizer::addItem);
                 ItemStack reward = itemRandomizer.getRandomItem();
                 player.closeInventory();
-                treasureOpener.startOpeningTreasure(block.getLocation());
-                TreasureAnimation.playOpenAnimation(block.getLocation(), treasure, reward, player);
+
+                if (reward != null) {
+
+                    keyManager.useKey(player, treasure);
+                    treasureOpener.startOpeningTreasure(block.getLocation());
+                    TreasureAnimation.playOpenAnimation(block.getLocation(), treasure, reward, player);
+
+                } else {
+                    VersionAdapter.MessageUtils().sendMessage(player, messagesFile.getFileOperations().getString("messages.treasure.no-reward"));
+                }
             } else {
                 VersionAdapter.MessageUtils().sendMessage(player, messagesFile.getFileOperations().getString("messages.treasure.dont-have-keys",
                                                                                                              new ReplaceData("{treasure}", treasure.getDisplayName())
